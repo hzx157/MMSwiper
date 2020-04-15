@@ -223,17 +223,15 @@
             [self.timer invalidate];
             self.timer = nil;
         }
-        if (@available(iOS 10.0, *)) {
-            self.timer = [NSTimer timerWithTimeInterval:self.timeInterval repeats:YES block:^(NSTimer * _Nonnull timer) {
-                
-                NSIndexPath *indexPath = [self.collectionView indexPathsForVisibleItems].lastObject;
-                NSInteger item = indexPath.item+1;
-                if(indexPath.item >= weakSelf.dataSource.count){
-                    item = 0;
-                }
-                [weakSelf.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:indexPath.section] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
-            }];
-        }
+           self.timer = [NSTimer timerWithTimeInterval:self.timeInterval repeats:YES block:^(NSTimer * _Nonnull timer) {
+               
+               NSIndexPath *indexPath = [self.collectionView indexPathsForVisibleItems].lastObject;
+               NSInteger item = indexPath.item+1;
+               if(indexPath.item >= weakSelf.dataSource.count){
+                   item = 0;
+               }
+               [weakSelf.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:indexPath.section] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+           }];
            [[NSRunLoop mainRunLoop]addTimer:self.timer forMode:NSDefaultRunLoopMode];
        }
 }

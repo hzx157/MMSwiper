@@ -24,7 +24,7 @@ Pod::Spec.new do |spec|
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  spec.description  =  "操作简单，使用方便,非常适合添加简单的轮播图的项目"
+  spec.description  =  "操作简单，使用方便,超级小超级轻级量的iOS轮播图"
   # <<-DESC
                    # DESC
 
@@ -66,7 +66,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.platform     = :ios
-  spec.platform     = :ios, "10.0"
+  spec.platform     = :ios, "8.0"
 
   #  When using multiple platforms
   # spec.ios.deployment_target = "5.0"
