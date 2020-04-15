@@ -17,18 +17,20 @@ Pod::Spec.new do |spec|
 
   spec.name         = "MMSwiper"
   spec.version      = "0.0.1"
-  spec.summary      = "A short description of MMSwiper."
+  spec.summary      = "基于UICollectionView的无限轮播图"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  spec.description  = <<-DESC
-                   DESC
+  spec.description  =  "操作简单，使用方便,非常适合添加简单的轮播图的项目"
+  # <<-DESC
+                   # DESC
 
-  spec.homepage     = "http://EXAMPLE/MMSwiper"
-  # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
+
+  spec.homepage     = "https://github.com/hzx157/MMSwiper"
+  # spec.screenshots  = "https://github.com/hzx157/MMSwiper/blob/master/image/C428F762-5C65-4100-936A-5783B75217EF.png", "www.example.com/screenshots_2.gif"
 
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -38,10 +40,10 @@ Pod::Spec.new do |spec|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  spec.license      = "MIT (example)"
+  spec.license      = "MIT"
   # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
-
+ 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  Specify the authors of the library, with email addresses. Email addresses
@@ -52,7 +54,7 @@ Pod::Spec.new do |spec|
   #  profile URL.
   #
 
-  spec.author             = { "黄真祥" => "huang.zhenxiang@huyukaka.com" }
+  spec.author             = { "Huangzhenxiang" => "huang.zhenxiang@huyukaka.com" }
   # Or just: spec.author    = "黄真祥"
   # spec.authors            = { "黄真祥" => "huang.zhenxiang@huyukaka.com" }
   # spec.social_media_url   = "https://twitter.com/黄真祥"
@@ -64,7 +66,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.platform     = :ios
-  # spec.platform     = :ios, "5.0"
+  spec.platform     = :ios, "10.0"
 
   #  When using multiple platforms
   # spec.ios.deployment_target = "5.0"
@@ -79,7 +81,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "http://EXAMPLE/MMSwiper.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/hzx157/MMSwiper.git", :tag => "#{spec.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -90,8 +92,8 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "Classes", "Classes/**/*.{h,m}"
-  spec.exclude_files = "Classes/Exclude"
+spec.source_files  = "MMSwiper", "MMSwiper/*.{h,m}"
+  # spec.exclude_files = "MMSwiper/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"
 
