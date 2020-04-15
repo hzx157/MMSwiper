@@ -1,22 +1,18 @@
 PODS:
-  - MMSwiper (0.0.1)
   - SDWebImage (5.6.1):
     - SDWebImage/Core (= 5.6.1)
   - SDWebImage/Core (5.6.1)
 
 DEPENDENCIES:
-  - MMSwiper
   - SDWebImage
 
 SPEC REPOS:
   trunk:
-    - MMSwiper
     - SDWebImage
 
 SPEC CHECKSUMS:
-  MMSwiper: a996acf3a5804053b4c4b9a168b9603b291fb461
   SDWebImage: 7edb9c3ea661e77a66661f7f044de8c1b55d1120
 
-PODFILE CHECKSUM: 9af10344f702876202a04883a575415d10ac26a3
+PODFILE CHECKSUM: e7936eeb9e3023f89dea000bd1100fef0078367b
 
 COCOAPODS: 1.9.1

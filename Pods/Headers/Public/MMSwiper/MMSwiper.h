@@ -1,1 +1,0 @@
-../../../MMSwiper/MMSwiper/MMSwiper.h
