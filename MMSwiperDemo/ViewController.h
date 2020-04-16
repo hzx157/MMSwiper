@@ -13,3 +13,13 @@
 
 @end
 
+
+//自己自主创建的model
+@interface MMSwiperModel : NSObject
+@property (nonatomic, copy) NSString *url;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *placeholderImage;
+
+-(instancetype)initWithUrl:(NSString *)url;
+-(instancetype)initWithUrl:(NSString *)url title:(NSString *)title;
+@end

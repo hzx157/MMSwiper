@@ -9,8 +9,7 @@
 #import "MMSwiper.h"
 @interface MMSwiper()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (nonatomic,strong,readwrite)UICollectionView *collectionView;
-@property (nonatomic,strong)UIPageControl *pageControl;
-@property (nonatomic,strong)NSMutableArray <MMSwiperModel*>*dataSource;
+@property (nonatomic,strong)NSMutableArray *dataSource;
 @property (nonatomic,strong)NSTimer *timer;
 @property (nonatomic,strong)NSIndexPath *indexPath;
 @end
@@ -65,7 +64,7 @@
     
 }
 
--(void)setModels:(NSMutableArray<MMSwiperModel *> *)models{
+-(void)setModels:(NSMutableArray *)models{
     _models = models;
     if(models.count > 0){
         self.pageControl.numberOfPages = models.count;
@@ -86,7 +85,7 @@
            
        }
     cell.imageView.contentMode = self.mm_contentMode;
-    MMSwiperModel *model = self.dataSource[indexPath.item];
+    id model = self.dataSource[indexPath.item];
     if([self.delegate respondsToSelector:@selector(swiper:forItemAtIndex:toModel:toCell:)]){
         [self.delegate swiper:self forItemAtIndex:[self infiniteRow:indexPath.item] toModel:model toCell:cell];
     }
@@ -140,7 +139,6 @@
         row = item;
     }
     
-    
     return row;
 }
 
@@ -149,7 +147,7 @@
     return self.dataSource.count;
 }
 
--(NSMutableArray <MMSwiperModel*>*)dataSource{
+-(NSMutableArray *)dataSource{
     if(!_dataSource){
         _dataSource = [NSMutableArray new];
     }
@@ -275,30 +273,6 @@
 @end
 
 
-
-@interface MMSwiperModel()
-
-@end
-
-@implementation MMSwiperModel
--(NSString *)placeholderImage{
-    if(!_placeholderImage){
-        _placeholderImage = @"";
-    }
-    return _placeholderImage;
-}
--(instancetype)initWithUrl:(NSString *)url{
-    return  [self initWithUrl:url title:@""];
-}
--(instancetype)initWithUrl:(NSString *)url title:(NSString *)title{
-    if(self = [super init]){
-        self.url = url;
-        self.title = title;
-       }
-       return self;
-}
-
-@end
 
 
 @interface MMSwiperCollectionViewFlowLayout()

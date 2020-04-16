@@ -15,20 +15,20 @@ typedef NS_ENUM(NSUInteger, MMSwiperPageMode) {
 };
 
 
-@class MMSwiperModel,MMSwiper,MMSwiperCell;
+@class MMSwiper,MMSwiperCell;
 @protocol MMSwiperDelegate <NSObject>
 
--(void)swiper:(MMSwiper *)swiper didSelectItemAtIndex:(NSInteger)index toModel:(MMSwiperModel *)model;
+-(void)swiper:(MMSwiper *)swiper didSelectItemAtIndex:(NSInteger)index toModel:(id)model;
 
 @required
--(void)swiper:(MMSwiper *)swiper forItemAtIndex:(NSInteger)index toModel:(MMSwiperModel *)model toCell:(MMSwiperCell *)cell;
+-(void)swiper:(MMSwiper *)swiper forItemAtIndex:(NSInteger)index toModel:(id)model toCell:(MMSwiperCell *)cell;
 @end
 
 @interface MMSwiper : UIView
 @property (nonatomic,strong,readonly) UICollectionView *collectionView;
 @property (nonatomic, weak) id<MMSwiperDelegate> delegate;
 @property (nonatomic, assign) UIViewContentMode mm_contentMode; //设置图片的模式
-@property (nonatomic, strong) NSMutableArray <MMSwiperModel*> *models; //数组源
+@property (nonatomic, strong) NSMutableArray *models; //数组源
 @property (nonatomic, strong) UIColor *pageIndicatorTintColor;  //page正常颜色
 @property (nonatomic, strong) UIColor *currentPageIndicatorTintColor; //page滑动颜色
 @property (nonatomic, assign) CGFloat pageBottomSpacing; // page距离底部的距离 默认10
@@ -36,7 +36,8 @@ typedef NS_ENUM(NSUInteger, MMSwiperPageMode) {
 @property (nonatomic, assign) BOOL isAuto; // 是否启动自动翻动  默认NO
 @property (nonatomic, assign) NSTimeInterval timeInterval; //默认是3.0f
 @property (nonatomic, assign) MMSwiperPageMode pageMode; //默认是MMSwiperPageModeBottomCenter
-@property (nonatomic,copy) void (^didSelectItemAtIndexBlock)(MMSwiperModel *model,NSInteger index); //回调
+@property (nonatomic, strong) UIPageControl *pageControl; //自行设置
+@property (nonatomic,copy) void (^didSelectItemAtIndexBlock)(id model,NSInteger index); //回调
 @end
 
 
@@ -44,13 +45,5 @@ typedef NS_ENUM(NSUInteger, MMSwiperPageMode) {
 @property (nonatomic, strong) UIImageView *imageView;
 @end
 
-@interface MMSwiperModel : NSObject
-@property (nonatomic, copy) NSString *url;
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *placeholderImage;
-
--(instancetype)initWithUrl:(NSString *)url;
--(instancetype)initWithUrl:(NSString *)url title:(NSString *)title;
-@end
 @interface MMSwiperCollectionViewFlowLayout:UICollectionViewFlowLayout
 @end

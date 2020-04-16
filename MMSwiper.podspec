@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "MMSwiper"
-  spec.version      = "0.0.1"
+  spec.version      = "0.0.3"
   spec.summary      = "基于UICollectionView的无限轮播图"
 
   # This description is used to generate tags and improve search results.

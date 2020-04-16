@@ -35,7 +35,7 @@
         m1View.currentPageIndicatorTintColor = [UIColor blueColor];
         m1View.pageIndicatorTintColor = [UIColor lightTextColor];
         [self.view addSubview:m1View];
-        m1View.models = [self setupDataModels];
+        m1View.models = [self setupDataModels]; //自己可以设定，传什么数组都可以
     
     
     MMSwiper*m2View = [[MMSwiper alloc]initWithFrame:CGRectMake(0, 580, self.view.bounds.size.width, 200)];
@@ -72,5 +72,31 @@
         
 }
 
+
+@end
+
+
+
+@interface MMSwiperModel()
+
+@end
+
+@implementation MMSwiperModel
+-(NSString *)placeholderImage{
+    if(!_placeholderImage){
+        _placeholderImage = @"";
+    }
+    return _placeholderImage;
+}
+-(instancetype)initWithUrl:(NSString *)url{
+    return  [self initWithUrl:url title:@""];
+}
+-(instancetype)initWithUrl:(NSString *)url title:(NSString *)title{
+    if(self = [super init]){
+        self.url = url;
+        self.title = title;
+       }
+       return self;
+}
 
 @end
