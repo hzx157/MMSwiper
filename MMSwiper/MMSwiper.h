@@ -43,7 +43,9 @@ typedef NS_ENUM(NSUInteger, MMSwiperPageMode) {
 
 @interface MMSwiperCell : UICollectionViewCell
 @property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UILabel *label;
 @end
 
 @interface MMSwiperCollectionViewFlowLayout:UICollectionViewFlowLayout
 @end
+    
