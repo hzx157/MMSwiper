@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4E5454C3244719B000008D99 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5454C2244719B000008D99 /* AppDelegate.m */; };
-		4E5454C6244719B000008D99 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5454C5244719B000008D99 /* SceneDelegate.m */; };
 		4E5454C9244719B000008D99 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5454C8244719B000008D99 /* ViewController.m */; };
 		4E5454CC244719B000008D99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E5454CA244719B000008D99 /* Main.storyboard */; };
 		4E5454CE244719B200008D99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E5454CD244719B200008D99 /* Assets.xcassets */; };
@@ -24,8 +23,6 @@
 		4E5454BE244719B000008D99 /* MMSwiperDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MMSwiperDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E5454C1244719B000008D99 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4E5454C2244719B000008D99 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4E5454C4244719B000008D99 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		4E5454C5244719B000008D99 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		4E5454C7244719B000008D99 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		4E5454C8244719B000008D99 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4E5454CB244719B000008D99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,8 +79,6 @@
 				4E5454DA244719E100008D99 /* MMSwiper */,
 				4E5454C1244719B000008D99 /* AppDelegate.h */,
 				4E5454C2244719B000008D99 /* AppDelegate.m */,
-				4E5454C4244719B000008D99 /* SceneDelegate.h */,
-				4E5454C5244719B000008D99 /* SceneDelegate.m */,
 				4E5454C7244719B000008D99 /* ViewController.h */,
 				4E5454C8244719B000008D99 /* ViewController.m */,
 				4E5454CA244719B000008D99 /* Main.storyboard */,
@@ -214,7 +209,6 @@
 				4E5454C3244719B000008D99 /* AppDelegate.m in Sources */,
 				4E5454D4244719B200008D99 /* main.m in Sources */,
 				4E5454DD244719F300008D99 /* MMSwiper.m in Sources */,
-				4E5454C6244719B000008D99 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,7 +351,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MMSwiperDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MMSwiperDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -372,7 +366,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MMSwiperDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MMSwiperDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

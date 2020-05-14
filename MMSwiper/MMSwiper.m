@@ -8,10 +8,11 @@
 
 #import "MMSwiper.h"
 @interface MMSwiper()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
-@property (nonatomic,strong,readwrite)UICollectionView *collectionView;
-@property (nonatomic,strong)NSMutableArray *dataSource;
-@property (nonatomic,strong)NSTimer *timer;
-@property (nonatomic,strong)NSIndexPath *indexPath;
+@property (nonatomic, strong,readwrite) UICollectionView *collectionView;
+@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) NSIndexPath *indexPath;
+@property (nonatomic, strong) UIImageView *placeHolderImageView;
 @end
 
 @implementation MMSwiper
@@ -59,22 +60,43 @@
      [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_pageControl(==20)]-10-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_pageControl,self)]];
      [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_pageControl]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_pageControl,self)]];
     
+    self.placeHolderImageView = [[UIImageView alloc]init];
+    self.placeHolderImageView.clipsToBounds = YES;
+    self.placeHolderImageView.hidden = YES;
+    [self addSubview:self.placeHolderImageView];
+    self.placeHolderImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[_placeHolderImageView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_placeHolderImageView,self)]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_placeHolderImageView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_placeHolderImageView,self)]];
+    
+    
     [self layoutIfNeeded];
 
     
 }
 
--(void)setModels:(NSMutableArray *)models{
+-(void)setModels:(NSArray *)models{
     _models = models;
     if(models.count > 0){
         self.pageControl.numberOfPages = models.count;
+        [self.dataSource removeAllObjects];
         
         if(self.isInfinite)
         [self.dataSource addObjectsFromArray:models];
         
         [self.dataSource addObjectsFromArray:models];
     }
+    self.placeHolderImageView.hidden = models.count > 0;
     [self.collectionView reloadData];
+}
+
+
+- (void)setMm_contentMode:(UIViewContentMode)mm_contentMode{
+    _mm_contentMode = mm_contentMode;
+    self.placeHolderImageView.contentMode = mm_contentMode;
+}
+- (void)setPlaceHolderImage:(UIImage *)placeHolderImage{
+    _placeHolderImage = placeHolderImage;
+    self.placeHolderImageView.image = placeHolderImage;
 }
 
 
@@ -198,7 +220,6 @@
 }
 -(void)setPageMode:(MMSwiperPageMode)pageMode{
     _pageMode = pageMode;
-   
    
      [self layoutIfNeeded];
 }

@@ -28,7 +28,8 @@ typedef NS_ENUM(NSUInteger, MMSwiperPageMode) {
 @property (nonatomic,strong,readonly) UICollectionView *collectionView;
 @property (nonatomic, weak) id<MMSwiperDelegate> delegate;
 @property (nonatomic, assign) UIViewContentMode mm_contentMode; //设置图片的模式
-@property (nonatomic, strong) NSMutableArray *models; //数组源
+@property (nonatomic, strong) NSArray *models; //数组源
+@property (nonatomic, strong) UIImage *placeHolderImage; //默认图片，当轮播图没有任何数据的时候就显示这个图
 @property (nonatomic, strong) UIColor *pageIndicatorTintColor;  //page正常颜色
 @property (nonatomic, strong) UIColor *currentPageIndicatorTintColor; //page滑动颜色
 @property (nonatomic, assign) CGFloat pageBottomSpacing; // page距离底部的距离 默认10
@@ -37,7 +38,7 @@ typedef NS_ENUM(NSUInteger, MMSwiperPageMode) {
 @property (nonatomic, assign) NSTimeInterval timeInterval; //默认是3.0f
 @property (nonatomic, assign) MMSwiperPageMode pageMode; //默认是MMSwiperPageModeBottomCenter
 @property (nonatomic, strong) UIPageControl *pageControl; //自行设置
-@property (nonatomic,copy) void (^didSelectItemAtIndexBlock)(id model,NSInteger index); //回调
+@property (nonatomic, copy) void (^didSelectItemAtIndexBlock)(id model,NSInteger index); //回调
 @end
 
 

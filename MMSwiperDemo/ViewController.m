@@ -17,15 +17,15 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+       [super viewDidLoad];
     
-        _carouselView = [[MMSwiper alloc]initWithFrame:CGRectMake(0, 100, self.view.bounds.size.width, 200)];
+       _carouselView = [[MMSwiper alloc]initWithFrame:CGRectMake(0, 80, self.view.bounds.size.width, 200)];
         _carouselView.delegate = self;
         [self.view addSubview:_carouselView];
        _carouselView.models = [self setupDataModels];
     
     
-        MMSwiper*m1View = [[MMSwiper alloc]initWithFrame:CGRectMake(0, 350, self.view.bounds.size.width, 200)];
+        MMSwiper*m1View = [[MMSwiper alloc]initWithFrame:CGRectMake(0, 300, self.view.bounds.size.width, 200)];
         m1View.delegate = self;
         m1View.isAuto = YES; //设置自动播放
         m1View.isInfinite = YES;  //设置是否无限循环
@@ -36,15 +36,15 @@
         m1View.pageIndicatorTintColor = [UIColor lightTextColor];
         [self.view addSubview:m1View];
         m1View.models = [self setupDataModels]; //自己可以设定，传什么数组都可以
-    
-    
-    MMSwiper*m2View = [[MMSwiper alloc]initWithFrame:CGRectMake(0, 580, self.view.bounds.size.width, 200)];
-    m2View.delegate = self;
-    m2View.isInfinite = YES;  //设置是否无限循环
-    m2View.pageMode = MMSwiperPageModeBottomLeft; //设置page的位置
-    m2View.pageBottomSpacing = 30.0f; //设置到底部的距离
-    [self.view addSubview:m2View];
-    m2View.models = [self setupDataModels];
+       
+       MMSwiper*m2View = [[MMSwiper alloc]initWithFrame:CGRectMake(0, 520, self.view.bounds.size.width, 200)];
+       m2View.delegate = self;
+       m2View.isInfinite = YES;  //设置是否无限循环
+       m2View.pageMode = MMSwiperPageModeBottomLeft; //设置page的位置
+       m2View.pageBottomSpacing = 30.0f; //设置到底部的距离
+       m2View.placeHolderImage = [UIImage imageNamed:@"组54"];
+       [self.view addSubview:m2View];
+       m2View.models = [self setupDataModels];
     
     
 }
