@@ -29,23 +29,30 @@
     }
     return self;
 }
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super initWithCoder:aDecoder])) {
+        [self setup];
+    }
+    return self;
+}
+
 -(void)setup{
     
-       MMSwiperCollectionViewFlowLayout *layou = [[MMSwiperCollectionViewFlowLayout alloc]init];
-       layou.minimumLineSpacing = 0.01f;
-       layou.minimumInteritemSpacing = 0.01f;
-      layou.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-       layou.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-       UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layou];
-      collectionView.pagingEnabled = YES;
-      collectionView.alwaysBounceHorizontal = NO;
-      collectionView.showsHorizontalScrollIndicator = NO;
-      collectionView.backgroundColor = self.backgroundColor;
-       collectionView.delegate = self;
-       collectionView.dataSource = self;
-       [collectionView registerClass:[MMSwiperCell class] forCellWithReuseIdentifier:@"setupCateCollectionView"];
-       [self addSubview:collectionView];
-       _collectionView = collectionView;
+    MMSwiperCollectionViewFlowLayout *layou = [[MMSwiperCollectionViewFlowLayout alloc]init];
+    layou.minimumLineSpacing = 0.01f;
+    layou.minimumInteritemSpacing = 0.01f;
+    layou.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    layou.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layou];
+    collectionView.pagingEnabled = YES;
+    collectionView.alwaysBounceHorizontal = NO;
+    collectionView.showsHorizontalScrollIndicator = NO;
+    collectionView.backgroundColor = self.backgroundColor;
+    collectionView.delegate = self;
+    collectionView.dataSource = self;
+    [collectionView registerClass:[MMSwiperCell class] forCellWithReuseIdentifier:@"setupCateCollectionView"];
+    [self addSubview:collectionView];
+    _collectionView = collectionView;
     collectionView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[collectionView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(collectionView,self)]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[collectionView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(collectionView,self)]];
@@ -57,8 +64,8 @@
     [self addSubview:_pageControl];
     _pageControl.translatesAutoresizingMaskIntoConstraints = NO;
     
-     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_pageControl(==20)]-10-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_pageControl,self)]];
-     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_pageControl]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_pageControl,self)]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_pageControl(==20)]-10-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_pageControl,self)]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_pageControl]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_pageControl,self)]];
     
     self.placeHolderImageView = [[UIImageView alloc]init];
     self.placeHolderImageView.clipsToBounds = YES;
@@ -81,7 +88,7 @@
         [self.dataSource removeAllObjects];
         
         if(self.isInfinite)
-        [self.dataSource addObjectsFromArray:models];
+            [self.dataSource addObjectsFromArray:models];
         
         [self.dataSource addObjectsFromArray:models];
     }
@@ -101,11 +108,11 @@
 
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-     MMSwiperCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"setupCateCollectionView" forIndexPath:indexPath];
-       if(!cell){
-           cell = [[MMSwiperCell alloc]init];
-           
-       }
+    MMSwiperCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"setupCateCollectionView" forIndexPath:indexPath];
+    if(!cell){
+        cell = [[MMSwiperCell alloc]init];
+
+    }
     cell.imageView.contentMode = self.mm_contentMode;
     id model = self.dataSource[indexPath.item];
     if([self.delegate respondsToSelector:@selector(swiper:forItemAtIndex:toModel:toCell:)]){
@@ -138,7 +145,7 @@
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-  
+
     if(self.didSelectItemAtIndexBlock){
         self.didSelectItemAtIndexBlock(self.dataSource[indexPath.item], indexPath.item);
     }
@@ -153,7 +160,7 @@
     NSInteger row = self.models.count;
     if(self.isInfinite){
         if(item >= row){
-              row = item - row;
+            row = item - row;
         }else{
             row = item;
         }
@@ -178,24 +185,24 @@
 
 -(void)layoutSubviews{
     [super layoutSubviews];
-     CGSize pointSize = [self.pageControl sizeForNumberOfPages:self.models.count];
+    CGSize pointSize = [self.pageControl sizeForNumberOfPages:self.models.count];
     switch (self.pageMode) {
-           case MMSwiperPageModeBottomLeft:
-           {
-               self.pageControl.frame = CGRectMake(self.pageBottomSpacing,self.frame.size.height-self.pageControl.frame.size.height-self.pageBottomSpacing, pointSize.width, pointSize.height);
-                 
-           }
-               break;
-           case MMSwiperPageModeBottomRight:
-           {
-               self.pageControl.frame = CGRectMake(self.frame.size.width-pointSize.width-self.pageBottomSpacing,self.frame.size.height-self.pageControl.frame.size.height-self.pageBottomSpacing, pointSize.width, pointSize.height);
-           }
-               break;
-               
-           default:
-               break;
-       }
-       
+        case MMSwiperPageModeBottomLeft:
+        {
+            self.pageControl.frame = CGRectMake(self.pageBottomSpacing,self.frame.size.height-self.pageControl.frame.size.height-self.pageBottomSpacing, pointSize.width, pointSize.height);
+
+        }
+            break;
+        case MMSwiperPageModeBottomRight:
+        {
+            self.pageControl.frame = CGRectMake(self.frame.size.width-pointSize.width-self.pageBottomSpacing,self.frame.size.height-self.pageControl.frame.size.height-self.pageBottomSpacing, pointSize.width, pointSize.height);
+        }
+            break;
+
+        default:
+            break;
+    }
+
 }
 -(void)setPageIndicatorTintColor:(UIColor *)pageIndicatorTintColor{
     _pageIndicatorTintColor = pageIndicatorTintColor;
@@ -216,12 +223,12 @@
         
     }];
     [self layoutIfNeeded];
-     
+
 }
 -(void)setPageMode:(MMSwiperPageMode)pageMode{
     _pageMode = pageMode;
-   
-     [self layoutIfNeeded];
+
+    [self layoutIfNeeded];
 }
 //无限循环
 -(void)setIsInfinite:(BOOL)isInfinite{
@@ -235,8 +242,8 @@
     if(isAuto){
         
         if(self.timeInterval == 0)
-             self.timeInterval = 3;
-           
+            self.timeInterval = 3;
+
         typeof(self) __weak weakSelf = self;
         if(self.timer){
             [self.timer invalidate];
@@ -253,8 +260,8 @@
                 [weakSelf.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:indexPath.section] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
             }];
         }
-           [[NSRunLoop mainRunLoop]addTimer:self.timer forMode:NSDefaultRunLoopMode];
-       }
+        [[NSRunLoop mainRunLoop]addTimer:self.timer forMode:NSDefaultRunLoopMode];
+    }
 }
 
 -(void)setTimeInterval:(NSTimeInterval)timeInterval{
@@ -306,26 +313,26 @@
     return YES;
 }
 /* 下次新增
-///  返回collectionView上面当前显示的所有元素（比如cell）的布局属性:这个方法决定了cell怎么排布
-///  每个cell都有自己对应的布局属性：UICollectionViewLayoutAttributes
-///  要求返回的数组中装着UICollectionViewLayoutAttributes对象
-- (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
-    NSArray *attributes = [super layoutAttributesForElementsInRect:rect];
-    CGRect visitRect = {self.collectionView.contentOffset,self.collectionView.bounds.size};
-// 需要copy原来的attributes 否则会有警告：This is likely occurring because the flow layout subclass xxxx is modifying attributes returned by UICollectionViewFlowLayout without copying them
-    NSMutableArray *attributesCopy = [NSMutableArray array];
-    for (UICollectionViewLayoutAttributes *attribute in attributes) {
-        UICollectionViewLayoutAttributes *attributeCopy = [attribute copy];
-        [attributesCopy addObject:attributeCopy];
-    }
-//    for (UICollectionViewLayoutAttributes *attribute in attributesCopy) {
-//        CGFloat distance = CGRectGetMidX(visitRect) - attribute.center.x;
-//        CGFloat coefficient = distance / (self.itemSize.width * 6); // 根据每个cell的距离设置旋转系数
-//        attribute.transform3D = CATransform3DMakeRotation(coefficient , 1, 0, 0); // 旋转
-//    }
-    return attributesCopy;
-    
-}
-*/
+ ///  返回collectionView上面当前显示的所有元素（比如cell）的布局属性:这个方法决定了cell怎么排布
+ ///  每个cell都有自己对应的布局属性：UICollectionViewLayoutAttributes
+ ///  要求返回的数组中装着UICollectionViewLayoutAttributes对象
+ - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
+ NSArray *attributes = [super layoutAttributesForElementsInRect:rect];
+ CGRect visitRect = {self.collectionView.contentOffset,self.collectionView.bounds.size};
+ // 需要copy原来的attributes 否则会有警告：This is likely occurring because the flow layout subclass xxxx is modifying attributes returned by UICollectionViewFlowLayout without copying them
+ NSMutableArray *attributesCopy = [NSMutableArray array];
+ for (UICollectionViewLayoutAttributes *attribute in attributes) {
+ UICollectionViewLayoutAttributes *attributeCopy = [attribute copy];
+ [attributesCopy addObject:attributeCopy];
+ }
+ //    for (UICollectionViewLayoutAttributes *attribute in attributesCopy) {
+ //        CGFloat distance = CGRectGetMidX(visitRect) - attribute.center.x;
+ //        CGFloat coefficient = distance / (self.itemSize.width * 6); // 根据每个cell的距离设置旋转系数
+ //        attribute.transform3D = CATransform3DMakeRotation(coefficient , 1, 0, 0); // 旋转
+ //    }
+ return attributesCopy;
+
+ }
+ */
 
 @end
